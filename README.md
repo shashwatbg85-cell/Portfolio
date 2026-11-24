@@ -6,7 +6,7 @@
 
 An ultra-modern, high-converting, animated **Bento-Grid Developer Dashboard Portfolio** for **Shashwat Sagar Srivastava** — B.Tech Computer Science & Engineering (Data Science & AI) student at Shri Ramswaroop Memorial University (SRMU).
 
-Designed with a **Cyber-Dark Mode** aesthetic, glassmorphism, dynamic spotlight border glows, system telemetry widgets, and an interactive simulation of the flagship **CARGO-KARMA** freight logistics platform.
+Designed with an **Emerald Green Cyber-Aesthetic (`#10b981`)**, an ambient low-opacity **HTML5 Canvas Matrix Digital Rain** animation, glassmorphism, dynamic spotlight border glows, system telemetry widgets, and an interactive simulation of the flagship **CARGO-KARMA** freight logistics platform.
 
 ---
 

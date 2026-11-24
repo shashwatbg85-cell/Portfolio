@@ -1,14 +1,103 @@
 /**
  * SHASHWAT SAGAR SRIVASTAVA - DEVELOPER DASHBOARD PORTFOLIO
- * High-performance Vanilla JavaScript Engine
- * Features: Spotlight cursor, 3D tilt, live IST clock, terminal typewriter,
- * interactive skills matrix, CARGO-KARMA route simulator, copy-toast & cyber audio synth.
+ * Theme: Emerald Green Cyber-Aesthetic (#10b981) + Matrix Digital Rain
+ * Features: HTML5 Canvas Matrix rain, spotlight cursor, 3D tilt, live IST clock,
+ * terminal typewriter, interactive skills matrix, CARGO-KARMA route simulator,
+ * clipboard copy toast & Web Audio API cyber synth.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   // ------------------------------------------------------------------------
-  // 1. Audio Synth Feedback (Web Audio API - Pure synthesized sound)
+  // 1. HTML5 Canvas Matrix Digital Rain Animation Engine
+  // ------------------------------------------------------------------------
+  const matrixCanvas = document.getElementById('matrixCanvas');
+  if (matrixCanvas) {
+    const ctx = matrixCanvas.getContext('2d');
+
+    // Matrix characters: Katakana, Binary, Hex & Syntax Glyphs
+    const katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const latin = '0123456789ABCDEF01{}[]<>=/+-*~#!$@';
+    const alphabet = katakana + latin;
+
+    const fontSize = 15;
+    let columns = 0;
+    let drops = [];
+    let animationFrameId = null;
+    let lastDrawTime = 0;
+    const fpsInterval = 1000 / 30; // 30 FPS for cinematic smooth feel & low CPU
+
+    function initMatrix() {
+      matrixCanvas.width = window.innerWidth;
+      matrixCanvas.height = window.innerHeight;
+
+      columns = Math.floor(matrixCanvas.width / fontSize);
+      drops = [];
+
+      for (let i = 0; i < columns; i++) {
+        // Randomize initial starting Y position for natural scatter
+        drops[i] = Math.floor(Math.random() * -100);
+      }
+    }
+
+    function drawMatrix(timestamp) {
+      animationFrameId = requestAnimationFrame(drawMatrix);
+
+      if (!timestamp) timestamp = 0;
+      const elapsed = timestamp - lastDrawTime;
+
+      if (elapsed > fpsInterval) {
+        lastDrawTime = timestamp - (elapsed % fpsInterval);
+
+        // Translucent fade over canvas creates trailing fade effect
+        ctx.fillStyle = 'rgba(4, 8, 6, 0.07)';
+        ctx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+        ctx.font = `${fontSize}px 'JetBrains Mono', monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+          const char = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+          const x = i * fontSize;
+          const y = drops[i] * fontSize;
+
+          // Leading drop has bright glowing mint/white tip
+          if (Math.random() > 0.88) {
+            ctx.fillStyle = '#a7f3d0'; // Bright mint glow
+            ctx.shadowColor = '#34d399';
+            ctx.shadowBlur = 8;
+          } else {
+            ctx.fillStyle = '#10b981'; // Cyber emerald
+            ctx.shadowColor = 'transparent';
+            ctx.shadowBlur = 0;
+          }
+
+          ctx.fillText(char, x, y);
+
+          // Reset to top once drop exceeds bottom edge
+          if (y > matrixCanvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+
+          drops[i]++;
+        }
+      }
+    }
+
+    initMatrix();
+    animationFrameId = requestAnimationFrame(drawMatrix);
+
+    // Responsive Canvas Resize with Debouncing
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        initMatrix();
+      }, 150);
+    }, { passive: true });
+  }
+
+  // ------------------------------------------------------------------------
+  // 2. Audio Synth Feedback (Web Audio API - Synthesized cyber clicks)
   // ------------------------------------------------------------------------
   class CyberAudioSynth {
     constructor() {
@@ -34,18 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(800, this.ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(350, this.ctx.currentTime + 0.06);
+        osc.frequency.setValueAtTime(820, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(360, this.ctx.currentTime + 0.05);
 
-        gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.06);
+        gain.gain.setValueAtTime(0.035, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.05);
 
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start();
-        osc.stop(this.ctx.currentTime + 0.06);
+        osc.stop(this.ctx.currentTime + 0.05);
       } catch (e) {
-        // Audio policy or unsupported
+        // Audio policy
       }
     }
 
@@ -58,16 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(520, this.ctx.currentTime);
-        osc.frequency.setValueAtTime(780, this.ctx.currentTime + 0.08);
+        osc.frequency.setValueAtTime(540, this.ctx.currentTime);
+        osc.frequency.setValueAtTime(840, this.ctx.currentTime + 0.08);
 
-        gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.045, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.22);
 
         osc.connect(gain);
         gain.connect(this.ctx.destination);
         osc.start();
-        osc.stop(this.ctx.currentTime + 0.2);
+        osc.stop(this.ctx.currentTime + 0.22);
       } catch (e) {
         // Audio policy
       }
@@ -96,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 2. Interactive Spotlight Cursor & Bento Card Mouse Tracking
+  // 3. Interactive Spotlight Cursor & Bento Card Mouse Tracking
   // ------------------------------------------------------------------------
   const spotlightCursor = document.getElementById('spotlightCursor');
   const bentoCards = document.querySelectorAll('.bento-card');
@@ -104,13 +193,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('mousemove', (e) => {
     const { clientX: x, clientY: y } = e;
 
-    // Move global ambient cursor spotlight
     if (spotlightCursor) {
       spotlightCursor.style.left = `${x}px`;
       spotlightCursor.style.top = `${y}px`;
     }
 
-    // Update individual bento card spotlight coordinates
     bentoCards.forEach((card) => {
       const rect = card.getBoundingClientRect();
       const cardX = x - rect.left;
@@ -121,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // ------------------------------------------------------------------------
-  // 3. Vanilla-Tilt 3D Initialization
+  // 4. Vanilla-Tilt 3D Initialization
   // ------------------------------------------------------------------------
   if (typeof VanillaTilt !== 'undefined') {
     VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
@@ -134,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 4. Live Real-Time Indian Standard Time (IST) Clock
+  // 5. Live Real-Time Indian Standard Time (IST) Clock
   // ------------------------------------------------------------------------
   const hourHand = document.getElementById('hourHand');
   const minHand = document.getElementById('minHand');
@@ -143,7 +230,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const digitalDate = document.getElementById('digitalDate');
 
   function updateISTClock() {
-    // Current UTC time + 5 hours 30 minutes for IST
     const now = new Date();
     const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
     const istTime = new Date(utcTime + (3600000 * 5.5));
@@ -152,7 +238,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutes = istTime.getMinutes();
     const seconds = istTime.getSeconds();
 
-    // Analog Clock Rotations
     const secDeg = (seconds / 60) * 360;
     const minDeg = ((minutes + seconds / 60) / 60) * 360;
     const hourDeg = (((hours % 12) + minutes / 60) / 12) * 360;
@@ -161,12 +246,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (minHand) minHand.style.transform = `translateX(-50%) rotate(${minDeg}deg)`;
     if (hourHand) hourHand.style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
 
-    // Digital Time Format: HH:MM:SS IST
     const pad = (n) => String(n).padStart(2, '0');
     const timeStr = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
     if (digitalTime) digitalTime.textContent = timeStr;
 
-    // Full Date Format
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const dateStr = istTime.toLocaleDateString('en-US', options);
     if (digitalDate) digitalDate.textContent = dateStr;
@@ -176,12 +259,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateISTClock, 1000);
 
   // ------------------------------------------------------------------------
-  // 5. Live Animated Terminal Snippet
+  // 6. Live Animated Terminal Snippet
   // ------------------------------------------------------------------------
   const typingElement = document.getElementById('terminalTypingText');
   const terminalCommands = [
     'git status --portfolio',
-    'python3 -m train_model --logistics',
+    'python3 -m matrix_rain --emerald',
     'node build_cargo_karma.js',
     'shashwat.isAvailableForInternship()',
     'echo "Ready to build innovative solutions."'
@@ -208,7 +291,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!isDeleting && charIndex === currentCmd.length) {
-      // Pause at end of line
       typingSpeed = 2200;
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
@@ -222,7 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   typeTerminalCommand();
 
-  // Terminal copy button
   const terminalCopyBtn = document.getElementById('terminalCopyBtn');
   if (terminalCopyBtn) {
     terminalCopyBtn.addEventListener('click', () => {
@@ -235,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 6. Interactive Toast Notification System
+  // 7. Interactive Toast Notification System
   // ------------------------------------------------------------------------
   const toastContainer = document.getElementById('toastContainer');
 
@@ -256,12 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     toastContainer.appendChild(toast);
 
-    // Force layout reflow for animation
     setTimeout(() => {
       toast.classList.add('show');
     }, 10);
 
-    // Auto dismiss after 3.5 seconds
     setTimeout(() => {
       toast.classList.remove('show');
       setTimeout(() => {
@@ -271,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 7. Interactive Copy-to-Clipboard for Email
+  // 8. Interactive Copy-to-Clipboard for Email
   // ------------------------------------------------------------------------
   function copyEmailToClipboard(email = 'shashwatbg85@gmail.com') {
     audioSynth.playSuccess();
@@ -303,7 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.removeChild(textArea);
   }
 
-  // Attach to Hero Button
   const btnCopyEmail = document.getElementById('btnCopyEmail');
   if (btnCopyEmail) {
     btnCopyEmail.addEventListener('click', () => {
@@ -312,7 +390,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Attach to Contact Section Channel Button
   const copyEmailChannelBtn = document.getElementById('copyEmailChannelBtn');
   if (copyEmailChannelBtn) {
     copyEmailChannelBtn.addEventListener('click', () => {
@@ -321,14 +398,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 8. Tech Stack Matrix & Interactive Skill Inspector
+  // 9. Tech Stack Matrix & Interactive Skill Inspector
   // ------------------------------------------------------------------------
   const skillCards = document.querySelectorAll('.skill-item-card');
   const filterTabs = document.querySelectorAll('.filter-tab');
   const calloutTitle = document.getElementById('calloutTitle');
   const calloutDesc = document.getElementById('calloutDesc');
 
-  // Activate initial skill progress bars
   function animateProgressBars() {
     skillCards.forEach(card => {
       const fill = card.querySelector('.skill-progress-fill');
@@ -338,10 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Trigger progress animation on load
   setTimeout(animateProgressBars, 300);
 
-  // Skill Inspector Hover / Tap
   skillCards.forEach(card => {
     function activateInspector() {
       skillCards.forEach(c => c.classList.remove('highlighted'));
@@ -365,7 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', activateInspector);
   });
 
-  // Category Filtering
   filterTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       audioSynth.playClick();
@@ -394,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ------------------------------------------------------------------------
-  // 9. CARGO-KARMA Interactive Logistics Simulation
+  // 10. CARGO-KARMA Interactive Logistics Simulation
   // ------------------------------------------------------------------------
   const btnSimulateRoute = document.getElementById('btnSimulateRoute');
   const btnToggleTransit = document.getElementById('btnToggleTransit');
@@ -404,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nodeDest = document.getElementById('nodeDest');
   const mockLoadCount = document.getElementById('mockLoadCount');
 
-  let simulationStage = 1; // 1: Mid, 2: Dest, 0: Origin
+  let simulationStage = 1;
 
   if (btnSimulateRoute) {
     btnSimulateRoute.addEventListener('click', () => {
@@ -414,26 +487,18 @@ document.addEventListener('DOMContentLoaded', () => {
       simulationStage = (simulationStage + 1) % 3;
 
       if (simulationStage === 0) {
-        // Origin Departed
-        if (routeProgressLine) {
-          routeProgressLine.style.setProperty('--progress-width', '15%');
-          const afterElem = routeProgressLine.querySelector('&::after');
-        }
-        routeProgressLine.style.cssText = "position: absolute; top: 2rem; left: 20px; right: 20px; height: 3px; background: rgba(255,255,255,0.1);";
         updateRouteStyle('15%');
         if (routeStatePill) routeStatePill.textContent = 'DEPARTED • ORIGIN GATEWAY';
         if (nodeMid) nodeMid.classList.remove('active');
         if (nodeDest) nodeDest.classList.remove('active');
         showToast('CARGO-KARMA: Consignment departed Delhi Hub.', 'info');
       } else if (simulationStage === 1) {
-        // Mid Checkpoint
         updateRouteStyle('55%');
         if (routeStatePill) routeStatePill.textContent = 'IN TRANSIT • ON SCHEDULE';
         if (nodeMid) nodeMid.classList.add('active');
         if (nodeDest) nodeDest.classList.remove('active');
         showToast('CARGO-KARMA: Checkpoint verified at Kanpur Depot.', 'info');
       } else if (simulationStage === 2) {
-        // Destination Reached
         updateRouteStyle('100%');
         if (routeStatePill) routeStatePill.textContent = 'DELIVERED • LUCKNOW CENTRAL';
         if (nodeMid) nodeMid.classList.add('active');
@@ -451,7 +516,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(styleSheet);
   }
 
-  // Toggle Consignment mock data
   let consignmentToggle = false;
   if (btnToggleTransit) {
     btnToggleTransit.addEventListener('click', () => {
@@ -472,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 10. Minimalist Contact Form Transmission & Mailto Bridge
+  // 11. Minimalist Contact Form Transmission & Mailto Bridge
   // ------------------------------------------------------------------------
   const contactForm = document.getElementById('contactForm');
   const submitFormBtn = document.getElementById('submitFormBtn');
@@ -491,7 +555,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Animated Submission State
       audioSynth.playClick();
       const originalBtnHTML = submitFormBtn.innerHTML;
       submitFormBtn.disabled = true;
@@ -506,22 +569,19 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="btn-submit-icon"><i class="fa-solid fa-circle-check text-green"></i></span>
           <span>Transmission Sent!</span>
         `;
-        submitFormBtn.style.background = 'linear-gradient(135deg, #10b981, #06b6d4)';
+        submitFormBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
 
         showToast(`Thank you, ${name}! Your transmission has been queued.`, 'success');
 
-        // Optional mailto direct dispatch link
         const mailtoSubject = encodeURIComponent(`[Portfolio Inquiry] ${inquiry} - from ${name}`);
         const mailtoBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nInquiry: ${inquiry}\n\nMessage:\n${message}`);
         
-        // Reset form after delay
         setTimeout(() => {
           contactForm.reset();
           submitFormBtn.disabled = false;
           submitFormBtn.innerHTML = originalBtnHTML;
           submitFormBtn.style.background = '';
 
-          // Inform user that direct mail client can also open
           showToast(`Opening client draft to shashwatbg85@gmail.com...`, 'info');
           window.location.href = `mailto:shashwatbg85@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
         }, 1800);
@@ -530,7 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ------------------------------------------------------------------------
-  // 11. Navigation Bar Active Highlighting & Mobile Drawer
+  // 12. Navigation Bar Active Highlighting & Mobile Drawer
   // ------------------------------------------------------------------------
   const navItems = document.querySelectorAll('.nav-item');
   const sections = document.querySelectorAll('section[id]');
@@ -538,7 +598,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileDrawer = document.getElementById('mobileDrawer');
   const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
 
-  // Mobile drawer toggle
   if (mobileToggle && mobileDrawer) {
     mobileToggle.addEventListener('click', () => {
       audioSynth.playClick();
@@ -552,7 +611,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ScrollSpy with IntersectionObserver
   const observerOptions = {
     root: null,
     rootMargin: '-20% 0px -70% 0px',
@@ -577,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
   sections.forEach(section => observer.observe(section));
 
   // ------------------------------------------------------------------------
-  // 12. Staggered Entrance Animations on Initial Load
+  // 13. Staggered Entrance Animations on Initial Load
   // ------------------------------------------------------------------------
   bentoCards.forEach((card, index) => {
     card.style.opacity = '0';
@@ -590,14 +648,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100 + (index * 90));
   });
 
-  // Global click sound for interactive elements
   document.querySelectorAll('a, button').forEach(el => {
     el.addEventListener('click', () => {
       audioSynth.playClick();
     });
   });
 
-  console.log("%c Shashwat.dev | Portfolio Dashboard v2.4 initialized. System Online. %c", 
-    "background: #111118; color: #06b6d4; font-size: 13px; font-weight: bold; padding: 6px 12px; border: 1px solid #6366f1; border-radius: 6px;", 
+  console.log("%c Shashwat.dev | Emerald Matrix Cyber Dashboard initialized. %c", 
+    "background: #040806; color: #10b981; font-size: 13px; font-weight: bold; padding: 6px 12px; border: 1px solid #10b981; border-radius: 6px;", 
     "");
 });
