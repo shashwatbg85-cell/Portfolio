@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shashwat Sagar Srivastava | Developer Dashboard & Portfolio</title>
+  <meta name="description" content="Portfolio of Shashwat Sagar Srivastava - B.Tech CSE (Data Science & AI) Student, Frontend Developer & AI Enthusiast. Featuring CARGO-KARMA logistics project.">
+  <meta name="keywords" content="Shashwat Sagar Srivastava, Portfolio, Frontend Developer, Data Science, AI, CARGO-KARMA, SRMU, Bento Grid">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2307070a'/><path d='M30 40C30 34.4772 34.4772 30 40 30H60C65.5228 30 70 34.4772 70 40C70 45.5228 65.5228 50 60 50H40C34.4772 50 30 54.4772 30 60C30 65.5228 34.4772 70 40 70H60C65.5228 70 70 65.5228 70 60' stroke='%236366f1' stroke-width='10' stroke-linecap='round' fill='none'/><circle cx='65' cy='35' r='5' fill='%2306b6d4'/></svg>">
+
+  <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons for developer badges -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-dark">
+
+  <!-- Ambient Dynamic Mouse Spotlight & Background Mesh Canvas -->
+  <div class="spotlight-cursor" id="spotlightCursor"></div>
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+  <div class="cyber-grid-overlay"></div>
+
+  <!-- Floating Glass Navbar -->
+  <header class="navbar-wrapper" id="navbar">
+    <nav class="glass-navbar">
+      <a href="#hero" class="nav-brand">
+        <div class="brand-monogram">
+          <span class="monogram-text">SS</span>
+          <span class="monogram-pulse"></span>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">Shashwat.dev</span>
+          <span class="brand-sub">Portfolio Terminal</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-item active"><i class="fa-solid fa-house-chimney-window"></i> <span>Overview</span></a></li>
+        <li><a href="#education" class="nav-item"><i class="fa-solid fa-graduation-cap"></i> <span>Education</span></a></li>
+        <li><a href="#skills" class="nav-item"><i class="fa-solid fa-layer-group"></i> <span>Skills</span></a></li>
+        <li><a href="#project" class="nav-item"><i class="fa-solid fa-rocket"></i> <span>Project</span></a></li>
+        <li><a href="#contact" class="nav-item"><i class="fa-solid fa-paper-plane"></i> <span>Contact</span></a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Live System Pulse -->
+        <div class="system-status-chip" title="System Operational & Accepting Internship Opportunities">
+          <span class="status-indicator-dot"></span>
+          <span class="status-text">Available for Internships</span>
+        </div>
+
+        <!-- Sound FX Synth Toggle -->
+        <button class="nav-btn-icon" id="soundToggle" title="Toggle UI Audio Synth" aria-label="Toggle Audio Feedback">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+
+        <!-- Direct GitHub CTA -->
+        <a href="https://github.com/shashwatbg85-cell" target="_blank" rel="noopener noreferrer" class="nav-btn-social" aria-label="GitHub Profile">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Open Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" class="mobile-nav-item active"><i class="fa-solid fa-house-chimney-window"></i> Overview</a></li>
+        <li><a href="#education" class="mobile-nav-item"><i class="fa-solid fa-graduation-cap"></i> Education & Status</a></li>
+        <li><a href="#skills" class="mobile-nav-item"><i class="fa-solid fa-layer-group"></i> Tech Matrix</a></li>
+        <li><a href="#project" class="mobile-nav-item"><i class="fa-solid fa-rocket"></i> CARGO-KARMA</a></li>
+        <li><a href="#contact" class="mobile-nav-item"><i class="fa-solid fa-paper-plane"></i> Get in Touch</a></li>
+      </ul>
+      <div class="mobile-drawer-footer">
+        <div class="system-status-chip">
+          <span class="status-indicator-dot"></span>
+          <span>System Online: Open for Work</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dashboard Container -->
+  <main class="dashboard-container" id="mainDashboard">
+
+    <!-- Top Telemetry Banner / Status Ticker -->
+    <div class="telemetry-bar">
+      <div class="telemetry-item">
+        <span class="telemetry-label"><i class="fa-solid fa-terminal"></i> ENVIRONMENT:</span>
+        <span class="telemetry-val text-cyan">PROD_DASHBOARD_v2.4</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <span class="telemetry-label"><i class="fa-solid fa-location-dot"></i> LOCATION:</span>
+        <span class="telemetry-val">Lucknow, India (IST)</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <span class="telemetry-label"><i class="fa-solid fa-bolt"></i> STATUS:</span>
+        <span class="telemetry-val text-green"><span class="live-dot"></span> OPEN FOR HIRE</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <span class="telemetry-label"><i class="fa-solid fa-code-branch"></i> CORE FOCUS:</span>
+        <span class="telemetry-val text-indigo">Web Architecture + Applied AI</span>
+      </div>
+    </div>
+
+    <!-- 12-Column Bento Grid -->
+    <div class="bento-grid">
+
+      <!-- ==============================================
+           1. HERO & ABOUT ME CARD (Large Top-Left Span)
+           ============================================== -->
+      <section class="bento-card hero-card" id="hero" data-tilt data-tilt-max="4" data-tilt-glare data-tilt-max-glare="0.15">
+        <div class="card-spotlight"></div>
+        <div class="card-pattern"></div>
+        
+        <div class="card-inner">
+          <!-- Top Badge & Quick Indicators -->
+          <div class="hero-top-bar">
+            <div class="badge-pill pulse-badge">
+              <span class="pulse-dot"></span>
+              <span class="badge-text">Student Developer & Problem Solver</span>
+            </div>
+            <div class="terminal-tag">
+              <i class="fa-solid fa-shield-halved"></i> Verified Profile
+            </div>
+          </div>
+
+          <!-- Hero Identity -->
+          <div class="hero-profile-row">
+            <div class="avatar-container">
+              <div class="avatar-ring"></div>
+              <div class="avatar-core">
+                <span class="avatar-letters">SS</span>
+              </div>
+              <div class="avatar-status-pip" title="Active & Coding"></div>
+            </div>
+
+            <div class="hero-titles">
+              <div class="role-chip">
+                <i class="fa-solid fa-sparkles text-cyan"></i>
+                <span>B.Tech CSE (Data Science & AI)</span>
+              </div>
+              <h1 class="hero-name">Shashwat Sagar <span class="gradient-text">Srivastava</span></h1>
+              <p class="hero-tagline">
+                <span class="tagline-prefix">&gt; </span>Frontend Developer <span class="text-indigo">&bull;</span> AI Enthusiast <span class="text-cyan">&bull;</span> Modern UI Architect
+              </p>
+            </div>
+          </div>
+
+          <!-- Hero Bio Paragraph -->
+          <p class="hero-bio">
+            Passionate developer building modern, data-driven web experiences and intelligent logistics solutions. 
+            Turning complex computational logic and analytical algorithms into sleek, high-performance, and interactive user interfaces.
+          </p>
+
+          <!-- Core Highlights Mini-Grid -->
+          <div class="hero-metrics-strip">
+            <div class="metric-pill">
+              <div class="metric-icon-box">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div class="metric-data">
+                <span class="metric-number">Modern Stack</span>
+                <span class="metric-label">HTML5 • CSS3 • JS (ES6+)</span>
+              </div>
+            </div>
+
+            <div class="metric-pill">
+              <div class="metric-icon-box">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div class="metric-data">
+                <span class="metric-number">Data Science & AI</span>
+                <span class="metric-label">Core Analytics & Logic</span>
+              </div>
+            </div>
+
+            <div class="metric-pill">
+              <div class="metric-icon-box">
+                <i class="fa-solid fa-truck-fast"></i>
+              </div>
+              <div class="metric-data">
+                <span class="metric-number">CARGO-KARMA</span>
+                <span class="metric-label">Logistics Solution</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero CTAs -->
+          <div class="hero-actions">
+            <a href="#project" class="btn-primary" id="btnViewProject">
+              <span class="btn-text">View Featured Project</span>
+              <span class="btn-icon"><i class="fa-solid fa-arrow-down-long"></i></span>
+            </a>
+
+            <button class="btn-secondary" id="btnCopyEmail" data-email="shashwatbg85@gmail.com" title="Click to copy email address">
+              <span class="btn-icon"><i class="fa-regular fa-copy"></i></span>
+              <span class="btn-text">Copy Email</span>
+              <span class="copy-hint-pill">shashwatbg85@gmail.com</span>
+            </button>
+
+            <a href="https://github.com/shashwatbg85-cell" target="_blank" rel="noopener noreferrer" class="btn-ghost" title="Explore GitHub Repositories">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           2. EDUCATION & LIVE STATUS WIDGET (Top-Right Span)
+           ============================================== -->
+      <section class="bento-card education-card" id="education" data-tilt data-tilt-max="4">
+        <div class="card-spotlight"></div>
+        <div class="card-inner">
+
+          <!-- Card Header -->
+          <div class="card-header-bar">
+            <div class="card-header-left">
+              <div class="icon-bubble cyan-bubble">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h2 class="card-title">Academic & System Telemetry</h2>
+                <p class="card-subtitle">University Credentials & Live Real-Time Feed</p>
+              </div>
+            </div>
+            <div class="card-tag">SRMU CSE</div>
+          </div>
+
+          <!-- Academic Institution Box -->
+          <div class="edu-details-box">
+            <div class="edu-degree-row">
+              <div class="edu-icon-badge">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <div class="edu-text">
+                <h3 class="edu-degree">B.Tech in Computer Science & Engineering</h3>
+                <div class="edu-spec">
+                  <span class="spec-highlight">Specialization:</span> Data Science & Artificial Intelligence
+                </div>
+              </div>
+            </div>
+
+            <div class="edu-university-row">
+              <i class="fa-solid fa-building-columns text-cyan"></i>
+              <span class="edu-uni-name">Shri Ramswaroop Memorial University (SRMU)</span>
+            </div>
+
+            <div class="edu-meta-row">
+              <div class="academic-timeline-badge">
+                <i class="fa-regular fa-calendar-check"></i>
+                <span>Undergraduate Program</span>
+              </div>
+              <div class="academic-focus-badge">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Data-Driven Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Analog & Digital IST Clock Widget -->
+          <div class="ist-clock-widget">
+            <div class="clock-analog-container">
+              <div class="clock-face">
+                <div class="clock-center"></div>
+                <div class="hand hour-hand" id="hourHand"></div>
+                <div class="hand min-hand" id="minHand"></div>
+                <div class="hand sec-hand" id="secHand"></div>
+                <!-- 12, 3, 6, 9 markers -->
+                <span class="clock-mark mark-12"></span>
+                <span class="clock-mark mark-3"></span>
+                <span class="clock-mark mark-6"></span>
+                <span class="clock-mark mark-9"></span>
+              </div>
+            </div>
+
+            <div class="clock-digital-details">
+              <div class="clock-timezone-badge">
+                <span class="live-dot pulse-slow"></span>
+                <span>INDIAN STANDARD TIME (IST) • UTC +05:30</span>
+              </div>
+              <div class="digital-time-display" id="digitalTime">15:47:00</div>
+              <div class="digital-date-display" id="digitalDate">Tuesday, November 24, 2026</div>
+              <div class="status-sync-note"><i class="fa-solid fa-circle-nodes text-green"></i> System Clock Synchronized</div>
+            </div>
+          </div>
+
+          <!-- Live Animated Terminal Snippet -->
+          <div class="terminal-console-widget">
+            <div class="terminal-top">
+              <div class="terminal-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="terminal-title"><i class="fa-solid fa-terminal"></i> bash &mdash; shashwat@srmu:~</span>
+              <button class="terminal-copy-btn" id="terminalCopyBtn" title="Copy CLI Command"><i class="fa-regular fa-clone"></i></button>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+              <div class="terminal-line"><span class="term-prompt">$</span> <span class="term-cmd">curl -s https://shashwat.dev/api/status</span></div>
+              <div class="terminal-output">
+                <span class="json-brace">{</span><br>
+                &nbsp;&nbsp;<span class="json-key">"student"</span>: <span class="json-str">"Shashwat Sagar Srivastava"</span>,<br>
+                &nbsp;&nbsp;<span class="json-key">"degree"</span>: <span class="json-str">"B.Tech CSE (DS & AI)"</span>,<br>
+                &nbsp;&nbsp;<span class="json-key">"status"</span>: <span class="json-val text-green">"learning_ds_ai_&_web_dev"</span>,<br>
+                &nbsp;&nbsp;<span class="json-key">"current_project"</span>: <span class="json-str">"CARGO-KARMA"</span>,<br>
+                &nbsp;&nbsp;<span class="json-key">"open_for_internship"</span>: <span class="json-bool">true</span><br>
+                <span class="json-brace">}</span>
+              </div>
+              <div class="terminal-line cursor-line">
+                <span class="term-prompt">$</span> <span class="typing-text" id="terminalTypingText"></span><span class="term-cursor"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================
+           3. TECH STACK & SKILLS MATRIX (Middle Span)
+           ============================================== -->
+      <section class="bento-card skills-card" id="skills" data-tilt data-tilt-max="3">
+        <div class="card-spotlight"></div>
+        <div class="card-inner">
+
+          <!-- Card Header -->
+          <div class="card-header-bar">
+            <div class="card-header-left">
+              <div class="icon-bubble indigo-bubble">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <div>
+                <h2 class="card-title">Tech Stack & Skills Matrix</h2>
+                <p class="card-subtitle">Interactive Proficiency Grid & Production Competencies</p>
+              </div>
+            </div>
+            <div class="skills-filter-tabs">
+              <button class="filter-tab active" data-filter="all">All</button>
+              <button class="filter-tab" data-filter="frontend">Frontend</button>
+              <button class="filter-tab" data-filter="datascience">DS & AI</button>
+              <button class="filter-tab" data-filter="tools">Engineering</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Skill Tooltip / Detail Preview Strip -->
+          <div class="skill-detail-callout" id="skillDetailCallout">
+            <div class="callout-icon">
+              <i class="fa-solid fa-circle-info text-cyan"></i>
+            </div>
+            <div class="callout-text">
+              <span class="callout-title" id="calloutTitle">Interactive Skill Inspector:</span>
+              <span class="callout-desc" id="calloutDesc">Hover or tap any tech card below to inspect architecture patterns, practical applications, and what I build with it.</span>
+            </div>
+          </div>
+
+          <!-- Skills Interactive Grid -->
+          <div class="skills-grid" id="skillsGrid">
+
+            <!-- HTML5 -->
+            <div class="skill-item-card" data-category="frontend" 
+                 data-skill="HTML5" 
+                 data-proficiency="95%" 
+                 data-details="Semantic Layouts, Responsive Documents, Canvas API, Accessible Web Accessibility (a11y), SEO Architecture">
+              <div class="skill-head">
+                <div class="skill-logo-box html-glow">
+                  <i class="fa-brands fa-html5"></i>
+                </div>
+                <div class="skill-info">
+                  <h4 class="skill-name">HTML5</h4>
+                  <span class="skill-role-tag">Markup & Semantic Architecture</span>
+                </div>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 95%;"></div>
+              </div>
+              <div class="skill-tags">
+                <span>Semantic HTML</span>
+                <span>Clean DOM</span>
+                <span>Accessibility</span>
+              </div>
+            </div>
+
+            <!-- CSS3 -->
+            <div class="skill-item-card" data-category="frontend" 
+                 data-skill="CSS3" 
+                 data-proficiency="92%" 
+                 data-details="Modern CSS Grid, Flexbox, Keyframe Animations, Glassmorphism, CSS Custom Properties, Responsive Micro-Interactions">
+              <div class="skill-head">
+                <div class="skill-logo-box css-glow">
+                  <i class="fa-brands fa-css3-alt"></i>
+                </div>
+                <div class="skill-info">
+                  <h4 class="skill-name">CSS3</h4>
+                  <span class="skill-role-tag">Design Systems & Animations</span>
+                </div>
+                <span class="skill-pct">92%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 92%;"></div>
+              </div>
+              <div class="skill-tags">
+                <span>CSS Grid</span>
+                <span>Glassmorphism</span>
+                <span>Keyframes</span>
+              </div>
+            </div>
+
+            <!-- JavaScript ES6+ -->
+            <div class="skill-item-card" data-category="frontend" 
+                 data-skill="JavaScript (ES6+)" 
+                 data-proficiency="88%" 
+                 data-details="Async/Await, Fetch API, DOM Dynamics, Event Listeners, State Handling, Modular Design, High-Converting Dashboards">
+              <div class="skill-head">
+                <div class="skill-logo-box js-glow">
+                  <i class="fa-brands fa-js"></i>
+                </div>
+                <div class="skill-info">
+                  <h4 class="skill-name">JavaScript (ES6+)</h4>
+                  <span class="skill-role-tag">Interactive Logic & Client APIs</span>
+                </div>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 88%;"></div>
+              </div>
+              <div class="skill-tags">
+                <span>ES6+ Modules</span>
+                <span>Async & Fetch</span>
+                <span>DOM Control</span>
+              </div>
+            </div>
+
+            <!-- Data Science & AI Foundations -->
+            <div class="skill-item-card" data-category="datascience" 
+                 data-skill="Data Science & AI Foundations" 
+                 data-proficiency="80%" 
+                 data-details="Python Programming, Data Exploration, Statistical Models, Machine Learning Principles, Intelligent Decision Logic">
+              <div class="skill-head">
+                <div class="skill-logo-box ai-glow">
+                  <i class="fa-solid fa-brain"></i>
+                </div>
+                <div class="skill-info">
+                  <h4 class="skill-name">Data Science & AI</h4>
+                  <span class="skill-role-tag">Algorithmic & Analytical Concepts</span>
+                </div>
+                <span class="skill-pct">80%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 80%;"></div>
+              </div>
+              <div class="skill-tags">
+                <span>Python Basics</span>
+                <span>Data Analytics</span>
+                <span>AI Concepts</span>
+              </div>
+            </div>
+
+            <!-- UI/UX Design & Prototyping -->
+            <div class="skill-item-card" data-category="frontend" 
+                 data-skill="UI/UX & Modern Web Aesthetics" 
+                 data-proficiency="89%" 
+                 data-details="Bento Grids, Cyber-Dark Themes, Micro-Interactions, Cyberpunk Lighting, Intuitive User Flows, Design Ergonomics">
+              <div class="skill-head">
+                <div class="skill-logo-box ui-glow">
+                  <i class="fa-solid fa-pen-ruler"></i>
+                </div>
+                <div class="skill-info">
+                  <h4 class="skill-name">UI/UX Design</h4>
+                  <span class="skill-role-tag">Bento Systems & Cyber Aesthetics</span>
+                </div>
+                <span class="skill-pct">89%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 89%;"></div>
+              </div>
+              <div class="skill-tags">
+                <span>User Flows</span>
+                <span>Bento Layouts</span>
+                <span>Micro-Interactions</span>
+              </div>
+            </div>
+
+            <!-- Git & Developer Workflow -->
+            <div class="skill-item-card" data-category="tools" 
+                 data-skill="Git, GitHub & DevTools" 
+                 data-proficiency="85%" 
+                 data-details="Version Control, Branch Management, Performance Profiling, Browser DevTools, Clean Architecture">
+              <div class="skill-head">
+                <div class="skill-logo-box git-glow">
+                  <i class="fa-brands fa-git-alt"></i>
+                </div>
+                <div class="skill-info">
+                  <h4 class="skill-name">Git & Workflow</h4>
+                  <span class="skill-role-tag">Version Control & DevTools</span>
+                </div>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-progress-track">
+                <div class="skill-progress-fill" style="--target-width: 85%;"></div>
+              </div>
+              <div class="skill-tags">
+                <span>Git/GitHub</span>
+                <span>DevTools</span>
+                <span>Clean Commits</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           4. FEATURED PROJECT SHOWCASE (Wide Feature Card)
+           ============================================== -->
+      <section class="bento-card project-card" id="project" data-tilt data-tilt-max="3" data-tilt-glare data-tilt-max-glare="0.2">
+        <div class="card-spotlight"></div>
+        <div class="card-inner">
+
+          <!-- Card Header & Badge -->
+          <div class="project-header-row">
+            <div class="project-title-group">
+              <div class="badge-pill featured-badge">
+                <i class="fa-solid fa-star text-yellow"></i>
+                <span>Flagship Engineering Showcase</span>
+              </div>
+              <h2 class="project-main-title">CARGO-KARMA</h2>
+              <p class="project-headline">Next-Generation Freight, Route & Logistics Management Web Platform</p>
+            </div>
+
+            <div class="project-quick-link-box">
+              <a href="https://github.com/shashwatbg85-cell/CARGO-KARMA" target="_blank" rel="noopener noreferrer" class="btn-primary project-github-cta" id="cargoGithubBtn">
+                <span><i class="fa-brands fa-github"></i> View GitHub Repo</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Project Description & Value Proposition -->
+          <div class="project-content-grid">
+            <div class="project-copy-col">
+              <p class="project-description">
+                A modern logistics and cargo management web solution built to streamline freight operations, route/cost visibility, and user workflow. Solves the friction of load allocation, consignment tracking, and real-time shipment transparency through an intuitive, data-empowered digital dashboard.
+              </p>
+
+              <!-- Highlights Bullet Points -->
+              <div class="project-features-list">
+                <div class="feature-bullet">
+                  <div class="bullet-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="bullet-text">
+                    <strong>Operational Transparency:</strong> Real-time route progression & consignment status tracking.
+                  </div>
+                </div>
+                <div class="feature-bullet">
+                  <div class="bullet-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="bullet-text">
+                    <strong>Cost & Freight Calculation:</strong> Automated calculation models for route, distance, and weight tiers.
+                  </div>
+                </div>
+                <div class="feature-bullet">
+                  <div class="bullet-check"><i class="fa-solid fa-check"></i></div>
+                  <div class="bullet-text">
+                    <strong>Responsive Cargo Dispatch UI:</strong> Clean, frictionless interface tailored for transport coordinators.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                <span class="tech-tag-badge"><i class="fa-brands fa-html5 text-orange"></i> HTML5</span>
+                <span class="tech-tag-badge"><i class="fa-brands fa-css3-alt text-cyan"></i> CSS3</span>
+                <span class="tech-tag-badge"><i class="fa-brands fa-js text-yellow"></i> JavaScript (ES6)</span>
+                <span class="tech-tag-badge"><i class="fa-solid fa-truck-moving text-indigo"></i> Logistics UX</span>
+                <span class="tech-tag-badge"><i class="fa-solid fa-mobile-screen-button text-green"></i> 100% Responsive</span>
+              </div>
+
+              <!-- Interactive Mockup Controller -->
+              <div class="mockup-controls">
+                <span class="controls-label"><i class="fa-solid fa-sliders"></i> Live Simulation:</span>
+                <button class="mockup-btn active" id="btnSimulateRoute"><i class="fa-solid fa-play"></i> Simulate Route</button>
+                <button class="mockup-btn" id="btnToggleTransit"><i class="fa-solid fa-box"></i> Toggle Consignment</button>
+              </div>
+            </div>
+
+            <!-- Stylized Interactive UI Preview Mockup Graphic -->
+            <div class="project-mockup-col">
+              <div class="mockup-window-frame">
+                <!-- Window Chrome Header -->
+                <div class="window-header">
+                  <div class="window-controls">
+                    <span class="win-dot dot-close"></span>
+                    <span class="win-dot dot-min"></span>
+                    <span class="win-dot dot-max"></span>
+                  </div>
+                  <div class="window-url-bar">
+                    <i class="fa-solid fa-lock text-green"></i>
+                    <span>cargo-karma.internal/dispatch-telemetry</span>
+                  </div>
+                  <div class="window-actions">
+                    <span class="live-pulse-dot"></span>
+                    <span class="window-status-txt">LIVE DISPATCH</span>
+                  </div>
+                </div>
+
+                <!-- Window Screen Content -->
+                <div class="window-screen">
+                  
+                  <!-- Top Metrics Bar -->
+                  <div class="mockup-stats-bar">
+                    <div class="mock-stat">
+                      <span class="mock-stat-lbl">Active Loads</span>
+                      <span class="mock-stat-num text-cyan" id="mockLoadCount">1,428</span>
+                    </div>
+                    <div class="mock-stat">
+                      <span class="mock-stat-lbl">On-Time Rate</span>
+                      <span class="mock-stat-num text-green">99.4%</span>
+                    </div>
+                    <div class="mock-stat">
+                      <span class="mock-stat-lbl">Cost Saved</span>
+                      <span class="mock-stat-num text-indigo">18.2%</span>
+                    </div>
+                  </div>
+
+                  <!-- Route Map Simulation Graph -->
+                  <div class="route-map-box">
+                    <div class="route-header">
+                      <div class="consignment-id">
+                        <i class="fa-solid fa-barcode"></i>
+                        <span>CONSIGNMENT: #CK-8942-IND</span>
+                      </div>
+                      <span class="route-state-pill" id="routeStatePill">IN TRANSIT &bull; ON SCHEDULE</span>
+                    </div>
+
+                    <!-- Visual Route Nodes -->
+                    <div class="route-visual-track">
+                      <div class="route-progress-line" id="routeProgressLine"></div>
+
+                      <!-- Node 1: Origin -->
+                      <div class="route-node node-origin active">
+                        <div class="node-dot"><i class="fa-solid fa-warehouse"></i></div>
+                        <div class="node-info">
+                          <span class="node-city">Delhi Hub</span>
+                          <span class="node-time">06:00 AM (Departed)</span>
+                        </div>
+                      </div>
+
+                      <!-- Node 2: Mid Transit -->
+                      <div class="route-node node-mid active" id="nodeMid">
+                        <div class="node-dot"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div class="node-info">
+                          <span class="node-city">Kanpur Depot</span>
+                          <span class="node-time">11:30 AM (Checkpoint)</span>
+                        </div>
+                      </div>
+
+                      <!-- Node 3: Destination -->
+                      <div class="route-node node-dest" id="nodeDest">
+                        <div class="node-dot"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="node-info">
+                          <span class="node-city">Lucknow Central</span>
+                          <span class="node-time">04:15 PM (Estimated)</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Live Dispatch Telemetry Panel -->
+                    <div class="telemetry-subpanel">
+                      <div class="subpanel-item">
+                        <span class="sub-key">Carrier Fleet:</span>
+                        <span class="sub-val">Karma-Express Titan X</span>
+                      </div>
+                      <div class="subpanel-item">
+                        <span class="sub-key">Cargo Weight:</span>
+                        <span class="sub-val">4.8 MT (Industrial Parts)</span>
+                      </div>
+                      <div class="subpanel-item">
+                        <span class="sub-key">Optimized Route:</span>
+                        <span class="sub-val text-green"><i class="fa-solid fa-shield-check"></i> Yamuna & Agra Expressway</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================
+           5. PHILOSOPHY & WORK ETHIC (Middle-Small Span)
+           ============================================== -->
+      <section class="bento-card philosophy-card" data-tilt data-tilt-max="4">
+        <div class="card-spotlight"></div>
+        <div class="card-inner">
+          <div class="icon-bubble cyan-bubble">
+            <i class="fa-solid fa-compass-drafting"></i>
+          </div>
+          <h3 class="philosophy-title">Engineering Mindset</h3>
+          <p class="philosophy-quote">
+            "Where clean frontend craftsmanship meets analytical intelligence. I architect digital interfaces that are not just aesthetically compelling, but computationally efficient, resilient, and inherently human."
+          </p>
+
+          <div class="philosophy-tags">
+            <span class="tag-chip"><i class="fa-solid fa-check-double text-cyan"></i> Zero Bloat</span>
+            <span class="tag-chip"><i class="fa-solid fa-bolt text-indigo"></i> Micro-Interactions</span>
+            <span class="tag-chip"><i class="fa-solid fa-chart-line text-green"></i> Data Driven</span>
+          </div>
+
+          <div class="student-status-badge">
+            <i class="fa-solid fa-award text-yellow"></i>
+            <span>Continuous Learner &bull; SRMU B.Tech 2023-2027</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================
+           6. INTERACTIVE CONTACT & SOCIAL DOCK (Bottom Span)
+           ============================================== -->
+      <section class="bento-card contact-card" id="contact" data-tilt data-tilt-max="3">
+        <div class="card-spotlight"></div>
+        <div class="card-inner">
+
+          <div class="contact-grid-layout">
+            <!-- Left Contact Info & Direct Channels -->
+            <div class="contact-left-info">
+              <div class="card-header-bar">
+                <div class="card-header-left">
+                  <div class="icon-bubble green-bubble">
+                    <i class="fa-solid fa-handshake"></i>
+                  </div>
+                  <div>
+                    <h2 class="card-title">Let's Build Something Exceptional</h2>
+                    <p class="card-subtitle">Open for Summer Internships, Frontend Roles & Collaborative Projects</p>
+                  </div>
+                </div>
+              </div>
+
+              <p class="contact-pitch">
+                Whether you have an internship role, an AI-powered logistics challenge, or want to discuss modern web architecture &mdash; my inbox is always open. Let's engineer something memorable together.
+              </p>
+
+              <!-- Direct Communication Channels -->
+              <div class="contact-channels-list">
+                <!-- Email Channel with Copy Button -->
+                <div class="channel-card email-channel" id="emailChannelCard">
+                  <div class="channel-icon-box">
+                    <i class="fa-regular fa-envelope"></i>
+                  </div>
+                  <div class="channel-details">
+                    <span class="channel-label">Direct Email</span>
+                    <a href="mailto:shashwatbg85@gmail.com" class="channel-val" id="emailAddressDisplay">shashwatbg85@gmail.com</a>
+                  </div>
+                  <button class="channel-action-btn" id="copyEmailChannelBtn" title="Copy email address" aria-label="Copy Email">
+                    <i class="fa-regular fa-copy"></i>
+                    <span class="tooltip-text">Copy</span>
+                  </button>
+                </div>
+
+                <!-- GitHub Channel -->
+                <div class="channel-card github-channel">
+                  <div class="channel-icon-box">
+                    <i class="fa-brands fa-github"></i>
+                  </div>
+                  <div class="channel-details">
+                    <span class="channel-label">GitHub Workspace</span>
+                    <a href="https://github.com/shashwatbg85-cell" target="_blank" rel="noopener noreferrer" class="channel-val">github.com/shashwatbg85-cell</a>
+                  </div>
+                  <a href="https://github.com/shashwatbg85-cell" target="_blank" rel="noopener noreferrer" class="channel-action-btn" title="Open GitHub" aria-label="Visit GitHub Profile">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+
+                <!-- University Location Channel -->
+                <div class="channel-card location-channel">
+                  <div class="channel-icon-box">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                  </div>
+                  <div class="channel-details">
+                    <span class="channel-label">Base Location</span>
+                    <span class="channel-val-static">Lucknow, Uttar Pradesh, India &bull; SRMU Campus</span>
+                  </div>
+                  <span class="channel-action-badge">IST (UTC+5:30)</span>
+                </div>
+              </div>
+
+              <!-- Fast Action Bar -->
+              <div class="quick-connect-pills">
+                <span class="connect-pill"><i class="fa-solid fa-clock-rotate-left text-green"></i> Typical Response: &lt; 24 Hrs</span>
+                <span class="connect-pill"><i class="fa-solid fa-globe text-cyan"></i> Remote / Hybrid Friendly</span>
+              </div>
+            </div>
+
+            <!-- Right Interactive Functional Minimalist Contact Form -->
+            <div class="contact-right-form">
+              <div class="form-wrapper-box">
+                <div class="form-header">
+                  <div class="form-title-group">
+                    <h3 class="form-heading"><i class="fa-solid fa-paper-plane text-cyan"></i> Send a Direct Message</h3>
+                    <p class="form-caption">Transmits directly to Shashwat's communication console</p>
+                  </div>
+                  <div class="terminal-dots">
+                    <span class="dot dot-green"></span>
+                    <span class="dot dot-yellow"></span>
+                  </div>
+                </div>
+
+                <form id="contactForm" class="cyber-form" novalidate>
+                  <div class="form-group">
+                    <label for="senderName" class="form-label">
+                      <span>Your Name</span>
+                      <span class="req-star">*</span>
+                    </label>
+                    <div class="input-container">
+                      <i class="fa-regular fa-user input-icon"></i>
+                      <input type="text" id="senderName" name="name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="senderEmail" class="form-label">
+                      <span>Email Address</span>
+                      <span class="req-star">*</span>
+                    </label>
+                    <div class="input-container">
+                      <i class="fa-regular fa-envelope input-icon"></i>
+                      <input type="email" id="senderEmail" name="email" class="form-input" placeholder="alex@company.com" required autocomplete="email">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="inquiryType" class="form-label">
+                      <span>Inquiry Classification</span>
+                    </label>
+                    <div class="input-container select-container">
+                      <i class="fa-solid fa-layer-group input-icon"></i>
+                      <select id="inquiryType" name="inquiry" class="form-input form-select">
+                        <option value="Internship">Internship Opportunity (Summer 2025/2026)</option>
+                        <option value="CARGO-KARMA">CARGO-KARMA & Logistics Collaboration</option>
+                        <option value="Frontend Project">Frontend / UI/UX Development</option>
+                        <option value="General Connect">Tech Chat / Mentorship</option>
+                      </select>
+                      <i class="fa-solid fa-chevron-down select-chevron"></i>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="senderMessage" class="form-label">
+                      <span>Message</span>
+                      <span class="req-star">*</span>
+                    </label>
+                    <div class="input-container textarea-container">
+                      <i class="fa-regular fa-message input-icon textarea-icon"></i>
+                      <textarea id="senderMessage" name="message" class="form-input form-textarea" rows="4" placeholder="Hello Shashwat, I came across your portfolio and CARGO-KARMA project..." required></textarea>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn-submit" id="submitFormBtn">
+                    <span class="btn-submit-text">Transmit Transmission</span>
+                    <span class="btn-submit-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                  </button>
+                  <p class="form-security-note"><i class="fa-solid fa-shield-halved text-green"></i> Direct mail dispatch &bull; Zero spam guarantee</p>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+    <!-- End Bento Grid -->
+
+    <!-- Dashboard Footer -->
+    <footer class="dashboard-footer">
+      <div class="footer-left">
+        <span class="footer-brand">Shashwat Sagar Srivastava</span>
+        <span class="footer-sub">&bull; B.Tech CSE (Data Science & AI) &bull; Shri Ramswaroop Memorial University</span>
+      </div>
+
+      <div class="footer-center">
+        <div class="build-badge">
+          <i class="fa-solid fa-code"></i>
+          <span>Built with HTML5, CSS3 & Vanilla JavaScript</span>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <a href="#hero" class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
+          <span>Top</span>
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive Floating Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- CDN Scripts for Micro-Interactions -->
+  <!-- Vanilla-Tilt for smooth 3D Bento Card Tilts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+  <!-- Main JavaScript Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
